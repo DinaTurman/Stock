@@ -35,6 +35,7 @@ final class StocksViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
+    
 }
 
 extension StocksViewController: UITableViewDataSource {
@@ -44,7 +45,10 @@ extension StocksViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
-        
+        cell.configureStockCell(cellRowAt: indexPath.row)
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 4
+        cell.layer.masksToBounds = true
         return cell
     }
     
