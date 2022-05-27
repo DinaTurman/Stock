@@ -44,6 +44,8 @@
 		AAE2321E2840DE300010EA99 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2321A2840DE300010EA99 /* NetworkError.swift */; };
 		AAE232212840DE6B0010EA99 /* StocksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232202840DE6B0010EA99 /* StocksService.swift */; };
 		AAE232232840DE950010EA99 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232222840DE950010EA99 /* Stock.swift */; };
+		AAE232252840E4630010EA99 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232242840E4630010EA99 /* DetailViewController.swift */; };
+		AAE232292840FDEE0010EA99 /* UINavigationItem+ Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232282840FDEE0010EA99 /* UINavigationItem+ Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		AAE2321A2840DE300010EA99 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		AAE232202840DE6B0010EA99 /* StocksService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksService.swift; sourceTree = "<group>"; };
 		AAE232222840DE950010EA99 /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		AAE232242840E4630010EA99 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AAE232282840FDEE0010EA99 /* UINavigationItem+ Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+ Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				AA25B709283D192F003E184C /* AppDelegate.swift */,
 				AA25B726283D3A52003E184C /* Application */,
 				AAE232162840DE300010EA99 /* NetworkService */,
+				AAE232242840E4630010EA99 /* DetailViewController.swift */,
 				AAE232142840DDD90010EA99 /* StockScreen */,
 				AAE232132840DDBC0010EA99 /* Extensions */,
 				AA25B728283D3A83003E184C /* SupportingFiles */,
@@ -194,6 +199,7 @@
 		AAE232132840DDBC0010EA99 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AAE232282840FDEE0010EA99 /* UINavigationItem+ Ext.swift */,
 				AA765FFF2840D86A006C745C /* UIColor+Ext.swift */,
 				AA25B71F283D2427003E184C /* NSObject+Ext.swift */,
 				AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */,
@@ -344,7 +350,9 @@
 				AA25B720283D2427003E184C /* NSObject+Ext.swift in Sources */,
 				AA25B70E283D192F003E184C /* StocksViewController.swift in Sources */,
 				AAE2321E2840DE300010EA99 /* NetworkError.swift in Sources */,
+				AAE232292840FDEE0010EA99 /* UINavigationItem+ Ext.swift in Sources */,
 				AA25B70A283D192F003E184C /* AppDelegate.swift in Sources */,
+				AAE232252840E4630010EA99 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

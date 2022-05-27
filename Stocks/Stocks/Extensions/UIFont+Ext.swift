@@ -17,4 +17,3 @@ extension UIFont {
     }
 }
 
-//UIFont(name: "Montserrat-SemiBold", size: 12)

@@ -1,5 +1,5 @@
 
-//Create URL Request
+
 import Foundation
 
 protocol Router {
@@ -21,13 +21,11 @@ extension Router {
     var headers: Headers {
         [:]
     }
-    
-    //post request
+
     var body: Body {
         [:]
     }
   
-    // преобразование из словаря body в data
     var httpBody: Data? {
         if body.isEmpty { return nil }
         return try? JSONSerialization.data(withJSONObject: body, options: [])

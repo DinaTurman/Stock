@@ -24,9 +24,11 @@ final class StocksViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        setupSubviews()
-        tableView.dataSource = self
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        setupSubviews()
         getStocks()
     }
     
@@ -58,6 +60,16 @@ final class StocksViewController: UIViewController {
     private func showErrorMessage(_ message: String) {
     }
     
+    private func prepareVC(index: Int) {
+        let vc = DetailViewController()
+        vc.configure(with: stocks[index])
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
 
 extension StocksViewController: UITableViewDataSource {
@@ -71,6 +83,10 @@ extension StocksViewController: UITableViewDataSource {
         cell.configure(with: stocks[indexPath.row])
         return cell
     }
-    
-    
+}
+
+extension StocksViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        prepareVC(index: indexPath.row)
+    }
 }

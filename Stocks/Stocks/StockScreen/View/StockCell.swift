@@ -46,7 +46,6 @@ final class StockCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.montserratBold(size: 18)
         label.text = "$3 204"
-        
         return label
     }()
     
@@ -56,6 +55,7 @@ final class StockCell: UITableViewCell {
         label.font = UIFont.montserratSemiBold(size: 12)
         label.text = "+$0.12 (1,15%)"
         label.textColor = UIColor.greenText()
+        label.textAlignment = .left
         
         return label
     }()
@@ -90,12 +90,12 @@ final class StockCell: UITableViewCell {
             logoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
             logoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 14),
             
-            priceLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 188),
+            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -17),
             priceLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
             priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -30),
             priceLabel.heightAnchor.constraint(equalToConstant: 24),
             
-            dayDeltaLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 178),
+            dayDeltaLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             dayDeltaLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
             dayDeltaLabel.heightAnchor.constraint(equalToConstant: 16)
         ])
@@ -115,8 +115,10 @@ final class StockCell: UITableViewCell {
     }
     
     func configure(with stock: Stock) {
-           logoView.symbolLabel.text = stock.symbol
-           logoView.nameLabel.text = stock.name
-           priceLabel.text = "\(stock.price)"
+        logoView.symbolLabel.text = stock.symbol
+        logoView.nameLabel.text = stock.name
+        priceLabel.text = "$" + String(format: "%.2f", stock.price)
+        dayDeltaLabel.text = "$" + String(format: "%.2f", stock.change) + " " + "(\(String(format: "%.2f", stock.changePercentage))%)"
+           
        }
 }
