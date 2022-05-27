@@ -112,6 +112,11 @@ final class StockCell: UITableViewCell {
         contentView.layer.borderColor = UIColor.white.cgColor
         contentView.layer.borderWidth = 4
         contentView.layer.masksToBounds = true
-        
     }
+    
+    func configure(with stock: Stock) {
+           logoView.symbolLabel.text = stock.symbol
+           logoView.nameLabel.text = stock.name
+           priceLabel.text = "\(stock.price)"
+       }
 }

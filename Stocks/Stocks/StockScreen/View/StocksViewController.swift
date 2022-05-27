@@ -9,6 +9,8 @@ import UIKit
 
 final class StocksViewController: UIViewController {
     
+    private var stocks: [Stock] = []
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,8 +23,11 @@ final class StocksViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .white
         setupSubviews()
         tableView.dataSource = self
+        
+        getStocks()
     }
     
     private func setupSubviews() {
@@ -36,17 +41,34 @@ final class StocksViewController: UIViewController {
         ])
     }
     
+    private func getStocks() {
+        let client = Network()
+        let service: StocksServiceProtocol = StocksService(client: client)
+        service.getStocks {[weak self] result in
+            switch result {
+            case .success(let stocks):
+                self?.stocks = stocks
+                self?.tableView.reloadData()
+            case .failure(let error):
+                self?.showErrorMessage(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func showErrorMessage(_ message: String) {
+    }
+    
 }
 
 extension StocksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return stocks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
         cell.configureStockCell(cellRowAt: indexPath.row)
-    
+        cell.configure(with: stocks[indexPath.row])
         return cell
     }
     

@@ -9,7 +9,7 @@ import UIKit
 
 final class StockCellLogoView: UIView {
     
-    private var titleLabel: UILabel = {
+  var symbolLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.montserratBold(size: 18)
@@ -18,7 +18,7 @@ final class StockCellLogoView: UIView {
         return label
     }()
     
-    private var subTitleLabel: UILabel = {
+    var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.montserratSemiBold(size: 12)
@@ -46,8 +46,8 @@ final class StockCellLogoView: UIView {
     }
     
     private func setupSubviews() {
-        addSubview(titleLabel)
-        addSubview(subTitleLabel)
+        addSubview(symbolLabel)
+        addSubview(nameLabel)
         addSubview(favoritesButton)
         setupConstarints()
     }
@@ -55,19 +55,19 @@ final class StockCellLogoView: UIView {
     private func setupConstarints() {
         NSLayoutConstraint.activate([
             //Title Label
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            titleLabel.heightAnchor.constraint(equalToConstant: 24),
+            symbolLabel.topAnchor.constraint(equalTo: topAnchor),
+            symbolLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            symbolLabel.heightAnchor.constraint(equalToConstant: 24),
             //Button
-            favoritesButton.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 6),
+            favoritesButton.leadingAnchor.constraint(equalTo: symbolLabel.trailingAnchor, constant: 6),
             favoritesButton.topAnchor.constraint(equalTo: topAnchor, constant: 3),
             favoritesButton.heightAnchor.constraint(equalToConstant: 16),
             favoritesButton.widthAnchor.constraint(equalToConstant: 16),
             //SubTitleLabel
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            subTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-            subTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            subTitleLabel.heightAnchor.constraint(equalToConstant: 16)
+            nameLabel.topAnchor.constraint(equalTo: symbolLabel.bottomAnchor),
+            nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            nameLabel.heightAnchor.constraint(equalToConstant: 16)
         ])
     }
 }
