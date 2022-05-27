@@ -9,11 +9,20 @@ import UIKit
 
 enum CellColors {
     case white, gray
+    
+    var cellColor: UIColor {
+        switch self {
+        case .white:
+            return .white
+        case .gray:
+            return UIColor(red: 240/255, green: 244/255, blue: 247/255, alpha: 1)
+        }
+    }
 }
 
 final class StockCell: UITableViewCell {
     
-    let logoView: StockCellLogoView = {
+    private let logoView: StockCellLogoView = {
         let view = StockCellLogoView()
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -35,8 +44,7 @@ final class StockCell: UITableViewCell {
     private var priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        let font = UIFont(name: "Montserrat-Bold", size: 18)
-        label.font = font
+        label.font = UIFont.montserratBold(size: 18)
         label.text = "$3 204"
         
         return label
@@ -45,10 +53,9 @@ final class StockCell: UITableViewCell {
     private var dayDeltaLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        let font = UIFont(name: "Montserrat-SemiBold", size: 12)
-        label.font = font
+        label.font = UIFont.montserratSemiBold(size: 12)
         label.text = "+$0.12 (1,15%)"
-        label.textColor = UIColor(red: 36/255, green: 178/255, blue: 93/255, alpha: 1)
+        label.textColor = UIColor.greenText()
         
         return label
     }()
@@ -95,19 +102,16 @@ final class StockCell: UITableViewCell {
     }
     
     private func changeBackground(color: CellColors) {
-        switch color {
-        case .white:
-            contentView.backgroundColor = .white
-        case .gray:
-            contentView.backgroundColor = UIColor(red: 240/255, green: 244/255, blue: 247/255, alpha: 1)
-        }
+        contentView.backgroundColor = color.cellColor
     }
     
     func configureStockCell(cellRowAt: Int) {
         cellRowAt % 2 == 1 ? changeBackground(color: .white) : changeBackground(color: .gray)
         contentView.layer.cornerRadius = 16
-        //contentView.layer.cornerRadius = 25
         contentView.clipsToBounds = true
+        contentView.layer.borderColor = UIColor.white.cgColor
+        contentView.layer.borderWidth = 4
+        contentView.layer.masksToBounds = true
         
     }
 }

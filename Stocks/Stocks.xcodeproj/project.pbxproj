@@ -36,6 +36,8 @@
 		AA25B754283D3AAE003E184C /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AA25B73E283D3AAE003E184C /* Montserrat-ExtraBoldItalic.ttf */; };
 		AA25B755283D3AAE003E184C /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA25B73F283D3AAE003E184C /* OFL.txt */; };
 		AA25B756283D3AAE003E184C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA25B740283D3AAE003E184C /* README.txt */; };
+		AA7660002840D86A006C745C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA765FFF2840D86A006C745C /* UIColor+Ext.swift */; };
+		AA9AFC372840CA35000FD1FC /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		AA25B73E283D3AAE003E184C /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		AA25B73F283D3AAE003E184C /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		AA25B740283D3AAE003E184C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		AA765FFF2840D86A006C745C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				AA25B726283D3A52003E184C /* Application */,
 				AA25B70D283D192F003E184C /* StocksViewController.swift */,
 				AA25B71D283D1DA2003E184C /* StockCell.swift */,
+				AA765FFF2840D86A006C745C /* UIColor+Ext.swift */,
+				AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */,
 				AA25B723283D34F5003E184C /* StockCellLogoView.swift */,
 				AA25B71F283D2427003E184C /* NSObject+Ext.swift */,
 				AA25B728283D3A83003E184C /* SupportingFiles */,
@@ -268,6 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA7660002840D86A006C745C /* UIColor+Ext.swift in Sources */,
+				AA9AFC372840CA35000FD1FC /* UIFont+Ext.swift in Sources */,
 				AA25B724283D34F5003E184C /* StockCellLogoView.swift in Sources */,
 				AA25B71E283D1DA2003E184C /* StockCell.swift in Sources */,
 				AA25B720283D2427003E184C /* NSObject+Ext.swift in Sources */,

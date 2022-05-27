@@ -7,13 +7,12 @@
 
 import UIKit
 
-class StockCellLogoView: UIView {
+final class StockCellLogoView: UIView {
     
     private var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        let font = UIFont(name: "Montserrat-Bold", size: 18)
-        label.font = font
+        label.font = UIFont.montserratBold(size: 18)
         label.text = "YNDX"
         
         return label
@@ -22,8 +21,7 @@ class StockCellLogoView: UIView {
     private var subTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        let font = UIFont(name: "Montserrat-SemiBold", size: 12)
-        label.font = font
+        label.font = UIFont.montserratSemiBold(size: 12)
         label.text = "Yandex, LLC"
         
         return label
