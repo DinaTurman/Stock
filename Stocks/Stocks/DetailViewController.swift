@@ -59,11 +59,11 @@ class DetailViewController: UIViewController{
         ])
     }
     
-    func configure(with stock: Stock) {
-        symbol = stock.symbol
-        name = stock.name
-        priceLabel.text = "$" + String(format: "%.2f", stock.price)
-        dayDeltaLabel.text = "$" + String(format: "%.2f", stock.change) + " " + "(\(String(format: "%.2f", stock.changePercentage))%)"
+    func configure(with model: StockModelProtocol) {
+        symbol = model.symbol
+        name = model.name
+        priceLabel.text = model.price
+        dayDeltaLabel.text = model.change
     }
 }
     

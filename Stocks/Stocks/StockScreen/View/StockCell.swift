@@ -114,11 +114,11 @@ final class StockCell: UITableViewCell {
         contentView.layer.masksToBounds = true
     }
     
-    func configure(with stock: Stock) {
-        logoView.symbolLabel.text = stock.symbol
-        logoView.nameLabel.text = stock.name
-        priceLabel.text = "$" + String(format: "%.2f", stock.price)
-        dayDeltaLabel.text = "$" + String(format: "%.2f", stock.change) + " " + "(\(String(format: "%.2f", stock.changePercentage))%)"
+    func configure(with model: StockModelProtocol) {
+        logoView.symbolLabel.text = model.symbol
+        logoView.nameLabel.text = model.name
+        priceLabel.text = model.price
+        dayDeltaLabel.text = model.change
            
        }
 }

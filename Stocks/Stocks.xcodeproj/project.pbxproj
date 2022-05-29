@@ -43,9 +43,12 @@
 		AAE2321D2840DE300010EA99 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232192840DE300010EA99 /* Router.swift */; };
 		AAE2321E2840DE300010EA99 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2321A2840DE300010EA99 /* NetworkError.swift */; };
 		AAE232212840DE6B0010EA99 /* StocksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232202840DE6B0010EA99 /* StocksService.swift */; };
-		AAE232232840DE950010EA99 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232222840DE950010EA99 /* Stock.swift */; };
+		AAE232232840DE950010EA99 /* StockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232222840DE950010EA99 /* StockResponse.swift */; };
 		AAE232252840E4630010EA99 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232242840E4630010EA99 /* DetailViewController.swift */; };
 		AAE232292840FDEE0010EA99 /* UINavigationItem+ Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232282840FDEE0010EA99 /* UINavigationItem+ Ext.swift */; };
+		AAE2322B28421A640010EA99 /* StocksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2322A28421A640010EA99 /* StocksPresenter.swift */; };
+		AAE2322E28429B3D0010EA99 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2322D28429B3D0010EA99 /* ModuleBuilder.swift */; };
+		AAE232302842A5120010EA99 /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2322F2842A5120010EA99 /* StockModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,9 +90,12 @@
 		AAE232192840DE300010EA99 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		AAE2321A2840DE300010EA99 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		AAE232202840DE6B0010EA99 /* StocksService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksService.swift; sourceTree = "<group>"; };
-		AAE232222840DE950010EA99 /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		AAE232222840DE950010EA99 /* StockResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockResponse.swift; sourceTree = "<group>"; };
 		AAE232242840E4630010EA99 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AAE232282840FDEE0010EA99 /* UINavigationItem+ Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+ Ext.swift"; sourceTree = "<group>"; };
+		AAE2322A28421A640010EA99 /* StocksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksPresenter.swift; sourceTree = "<group>"; };
+		AAE2322D28429B3D0010EA99 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		AAE2322F2842A5120010EA99 /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +129,10 @@
 			isa = PBXGroup;
 			children = (
 				AA25B709283D192F003E184C /* AppDelegate.swift */,
+				AAE2322D28429B3D0010EA99 /* ModuleBuilder.swift */,
 				AA25B726283D3A52003E184C /* Application */,
-				AAE232162840DE300010EA99 /* NetworkService */,
 				AAE232242840E4630010EA99 /* DetailViewController.swift */,
+				AAE232162840DE300010EA99 /* NetworkService */,
 				AAE232142840DDD90010EA99 /* StockScreen */,
 				AAE232132840DDBC0010EA99 /* Extensions */,
 				AA25B728283D3A83003E184C /* SupportingFiles */,
@@ -210,9 +217,10 @@
 		AAE232142840DDD90010EA99 /* StockScreen */ = {
 			isa = PBXGroup;
 			children = (
-				AAE232222840DE950010EA99 /* Stock.swift */,
+				AAE232312842A5480010EA99 /* Model */,
 				AAE2321F2840DE6B0010EA99 /* Service */,
 				AAE232152840DDF40010EA99 /* View */,
+				AAE2322C28421A6A0010EA99 /* Presenter */,
 			);
 			path = StockScreen;
 			sourceTree = "<group>";
@@ -242,8 +250,25 @@
 			isa = PBXGroup;
 			children = (
 				AAE232202840DE6B0010EA99 /* StocksService.swift */,
+				AAE232222840DE950010EA99 /* StockResponse.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		AAE2322C28421A6A0010EA99 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AAE2322A28421A640010EA99 /* StocksPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		AAE232312842A5480010EA99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AAE2322F2842A5120010EA99 /* StockModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,19 +365,22 @@
 			files = (
 				AA7660002840D86A006C745C /* UIColor+Ext.swift in Sources */,
 				AA9AFC372840CA35000FD1FC /* UIFont+Ext.swift in Sources */,
+				AAE232302842A5120010EA99 /* StockModel.swift in Sources */,
 				AAE232212840DE6B0010EA99 /* StocksService.swift in Sources */,
 				AAE2321D2840DE300010EA99 /* Router.swift in Sources */,
-				AAE232232840DE950010EA99 /* Stock.swift in Sources */,
+				AAE232232840DE950010EA99 /* StockResponse.swift in Sources */,
 				AAE2321B2840DE300010EA99 /* NetworkService.swift in Sources */,
 				AA25B724283D34F5003E184C /* StockCellLogoView.swift in Sources */,
 				AA25B71E283D1DA2003E184C /* StockCell.swift in Sources */,
 				AAE2321C2840DE300010EA99 /* HTTPMethod.swift in Sources */,
 				AA25B720283D2427003E184C /* NSObject+Ext.swift in Sources */,
+				AAE2322E28429B3D0010EA99 /* ModuleBuilder.swift in Sources */,
 				AA25B70E283D192F003E184C /* StocksViewController.swift in Sources */,
 				AAE2321E2840DE300010EA99 /* NetworkError.swift in Sources */,
 				AAE232292840FDEE0010EA99 /* UINavigationItem+ Ext.swift in Sources */,
 				AA25B70A283D192F003E184C /* AppDelegate.swift in Sources */,
 				AAE232252840E4630010EA99 /* DetailViewController.swift in Sources */,
+				AAE2322B28421A640010EA99 /* StocksPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
