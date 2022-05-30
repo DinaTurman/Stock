@@ -38,6 +38,14 @@
 		AA25B756283D3AAE003E184C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA25B740283D3AAE003E184C /* README.txt */; };
 		AA7660002840D86A006C745C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA765FFF2840D86A006C745C /* UIColor+Ext.swift */; };
 		AA9AFC372840CA35000FD1FC /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */; };
+		AAE2321B2840DE300010EA99 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232172840DE300010EA99 /* NetworkService.swift */; };
+		AAE2321C2840DE300010EA99 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232182840DE300010EA99 /* HTTPMethod.swift */; };
+		AAE2321D2840DE300010EA99 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232192840DE300010EA99 /* Router.swift */; };
+		AAE2321E2840DE300010EA99 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2321A2840DE300010EA99 /* NetworkError.swift */; };
+		AAE232212840DE6B0010EA99 /* StocksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232202840DE6B0010EA99 /* StocksService.swift */; };
+		AAE232232840DE950010EA99 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232222840DE950010EA99 /* Stock.swift */; };
+		AAE232252840E4630010EA99 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232242840E4630010EA99 /* DetailViewController.swift */; };
+		AAE232292840FDEE0010EA99 /* UINavigationItem+ Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232282840FDEE0010EA99 /* UINavigationItem+ Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +82,14 @@
 		AA25B740283D3AAE003E184C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		AA765FFF2840D86A006C745C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
+		AAE232172840DE300010EA99 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		AAE232182840DE300010EA99 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		AAE232192840DE300010EA99 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		AAE2321A2840DE300010EA99 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		AAE232202840DE6B0010EA99 /* StocksService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StocksService.swift; sourceTree = "<group>"; };
+		AAE232222840DE950010EA99 /* Stock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		AAE232242840E4630010EA99 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AAE232282840FDEE0010EA99 /* UINavigationItem+ Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+ Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,12 +124,10 @@
 			children = (
 				AA25B709283D192F003E184C /* AppDelegate.swift */,
 				AA25B726283D3A52003E184C /* Application */,
-				AA25B70D283D192F003E184C /* StocksViewController.swift */,
-				AA25B71D283D1DA2003E184C /* StockCell.swift */,
-				AA765FFF2840D86A006C745C /* UIColor+Ext.swift */,
-				AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */,
-				AA25B723283D34F5003E184C /* StockCellLogoView.swift */,
-				AA25B71F283D2427003E184C /* NSObject+Ext.swift */,
+				AAE232162840DE300010EA99 /* NetworkService */,
+				AAE232242840E4630010EA99 /* DetailViewController.swift */,
+				AAE232142840DDD90010EA99 /* StockScreen */,
+				AAE232132840DDBC0010EA99 /* Extensions */,
 				AA25B728283D3A83003E184C /* SupportingFiles */,
 			);
 			path = Stocks;
@@ -180,6 +194,56 @@
 				AA25B73E283D3AAE003E184C /* Montserrat-ExtraBoldItalic.ttf */,
 			);
 			path = static;
+			sourceTree = "<group>";
+		};
+		AAE232132840DDBC0010EA99 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAE232282840FDEE0010EA99 /* UINavigationItem+ Ext.swift */,
+				AA765FFF2840D86A006C745C /* UIColor+Ext.swift */,
+				AA25B71F283D2427003E184C /* NSObject+Ext.swift */,
+				AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		AAE232142840DDD90010EA99 /* StockScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AAE232222840DE950010EA99 /* Stock.swift */,
+				AAE2321F2840DE6B0010EA99 /* Service */,
+				AAE232152840DDF40010EA99 /* View */,
+			);
+			path = StockScreen;
+			sourceTree = "<group>";
+		};
+		AAE232152840DDF40010EA99 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA25B71D283D1DA2003E184C /* StockCell.swift */,
+				AA25B70D283D192F003E184C /* StocksViewController.swift */,
+				AA25B723283D34F5003E184C /* StockCellLogoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AAE232162840DE300010EA99 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				AAE232172840DE300010EA99 /* NetworkService.swift */,
+				AAE232182840DE300010EA99 /* HTTPMethod.swift */,
+				AAE232192840DE300010EA99 /* Router.swift */,
+				AAE2321A2840DE300010EA99 /* NetworkError.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		AAE2321F2840DE6B0010EA99 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AAE232202840DE6B0010EA99 /* StocksService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,11 +340,19 @@
 			files = (
 				AA7660002840D86A006C745C /* UIColor+Ext.swift in Sources */,
 				AA9AFC372840CA35000FD1FC /* UIFont+Ext.swift in Sources */,
+				AAE232212840DE6B0010EA99 /* StocksService.swift in Sources */,
+				AAE2321D2840DE300010EA99 /* Router.swift in Sources */,
+				AAE232232840DE950010EA99 /* Stock.swift in Sources */,
+				AAE2321B2840DE300010EA99 /* NetworkService.swift in Sources */,
 				AA25B724283D34F5003E184C /* StockCellLogoView.swift in Sources */,
 				AA25B71E283D1DA2003E184C /* StockCell.swift in Sources */,
+				AAE2321C2840DE300010EA99 /* HTTPMethod.swift in Sources */,
 				AA25B720283D2427003E184C /* NSObject+Ext.swift in Sources */,
 				AA25B70E283D192F003E184C /* StocksViewController.swift in Sources */,
+				AAE2321E2840DE300010EA99 /* NetworkError.swift in Sources */,
+				AAE232292840FDEE0010EA99 /* UINavigationItem+ Ext.swift in Sources */,
 				AA25B70A283D192F003E184C /* AppDelegate.swift in Sources */,
+				AAE232252840E4630010EA99 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
