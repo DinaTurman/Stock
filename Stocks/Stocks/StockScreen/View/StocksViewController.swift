@@ -38,6 +38,7 @@ final class StocksViewController: UIViewController {
         setupView()
         setupSubviews()
         presenter.loadView()
+        
     }
     
     private func setupSubviews() {
@@ -59,7 +60,7 @@ final class StocksViewController: UIViewController {
     }
     
     private func prepareVC(index: IndexPath) {
-        let vc = DetailViewController()
+        guard let vc = ModuleBuilder.shared.detailVC() as? DetailViewController else { return }
         vc.configure(with: presenter.model(for: index))
 
         let backItem = UIBarButtonItem()

@@ -33,7 +33,15 @@ final class ModuleBuilder {
         return view
     }
     
-    func secondVC() -> UIViewController {
+    func detailVC() -> UIViewController {
+        let presenter = DetailPresenter(service: stocksService())
+        let view = DetailViewController(presenter: presenter)
+        presenter.view = view
+        
+        return view
+    }
+    
+    func searchVC() -> UIViewController {
         UIViewController()
     }
     
@@ -45,13 +53,13 @@ final class ModuleBuilder {
         let tabbar = UITabBarController()
         
         let stocksVC = UINavigationController(rootViewController: stocksModule())
-        stocksVC.tabBarItem = UITabBarItem(title: "Stocks", image: UIImage(named: "diagram"), tag: 0)
+        stocksVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "diagram"), tag: 0)
         
-        let secondVC = secondVC()
-        secondVC.tabBarItem = UITabBarItem(title: "Favorites", image: nil, tag: 2)
+        let secondVC = searchVC()
+        secondVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Star"), tag: 2)
         
         let thirdVC = thirdVC()
-        thirdVC.tabBarItem = UITabBarItem(title: "Search", image: nil, tag: 2)
+        thirdVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Search"), tag: 2)
         
         tabbar.viewControllers = [stocksVC, secondVC, thirdVC]
         
