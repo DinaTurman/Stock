@@ -9,27 +9,36 @@ import UIKit
 
 final class StocksViewController: UIViewController {
     
-    private var stocks: [Stock] = []
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
         
         return tableView
     }()
-
+    
+    private let presenter: StocksPresenterProtocol
+    
+    init(presenter: StocksPresenterProtocol) {
+        self.presenter = presenter
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        
+        setupView()
         setupSubviews()
-        getStocks()
+        presenter.loadView()
+        
     }
     
     private func setupSubviews() {
@@ -43,50 +52,53 @@ final class StocksViewController: UIViewController {
         ])
     }
     
-    private func getStocks() {
-        let client = Network()
-        let service: StocksServiceProtocol = StocksService(client: client)
-        service.getStocks {[weak self] result in
-            switch result {
-            case .success(let stocks):
-                self?.stocks = stocks
-                self?.tableView.reloadData()
-            case .failure(let error):
-                self?.showErrorMessage(error.localizedDescription)
-            }
-        }
+    private func setupView() {
+        view.backgroundColor = .white
     }
     
     private func showErrorMessage(_ message: String) {
     }
     
-    private func prepareVC(index: Int) {
-        let vc = DetailViewController()
-        vc.configure(with: stocks[index])
-        
+    private func prepareVC(index: IndexPath) {
+        guard let vc = ModuleBuilder.shared.detailVC() as? DetailViewController else { return }
+        vc.configure(with: presenter.model(for: index))
+
         let backItem = UIBarButtonItem()
         backItem.title = ""
         navigationItem.backBarButtonItem = backItem
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+extension StocksViewController: StocksViewProtocol {
+    func updateView() {
+        tableView.reloadData()
+    }
     
+    func updateView(withLoader isLoading: Bool) {
+        print("Loader is - ", isLoading, " at ", Date())
+    }
+    
+    func updateView(withError message: String) {
+        print("Error - ", message)
+    }
 }
 
 extension StocksViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stocks.count
+        return presenter.itemCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StockCell.typeName, for: indexPath) as! StockCell
         cell.configureStockCell(cellRowAt: indexPath.row)
-        cell.configure(with: stocks[indexPath.row])
+        cell.configure(with: presenter.model(for: indexPath))
         return cell
     }
 }
 
 extension StocksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        prepareVC(index: indexPath.row)
+        prepareVC(index: indexPath)
     }
 }
