@@ -24,18 +24,5 @@ struct Stock: Decodable {
     }
 }
 
-struct PriceChanges: Decodable {
-    let prices: [[Double]]
-    let marketCaps: [[Double]]
-    let totalVolumes: [[Double]]
-    
-    enum CodingKeys: String, CodingKey {
-        case prices
-        case marketCaps =  "market_caps"
-        case totalVolumes = "total_volumes"
-    }
-}
 
-/**"prices": [601 items],
- "market_caps": [601 items],
- "total_volumes": [601 items]*/
+

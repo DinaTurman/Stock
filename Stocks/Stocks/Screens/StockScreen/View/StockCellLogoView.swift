@@ -9,7 +9,10 @@ import UIKit
 
 final class StockCellLogoView: UIView {
     
-  var symbolLabel: UILabel = {
+    var favoriteAction: (() -> Void)?
+    
+    
+    var symbolLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.montserratBold(size: 18)
@@ -27,12 +30,14 @@ final class StockCellLogoView: UIView {
         return label
     }()
     
-    private var favoritesButton: UIButton = {
+   var favoriteButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "Path")
+        button.setImage(UIImage(named: "Path (1)"), for: .selected)
+        button.addTarget(self, action: #selector(favoriteButtonTap), for: .touchUpInside)
         button.setImage(image, for: .normal)
-       
+        
         return button
     }()
     
@@ -48,7 +53,7 @@ final class StockCellLogoView: UIView {
     private func setupSubviews() {
         addSubview(symbolLabel)
         addSubview(nameLabel)
-        addSubview(favoritesButton)
+        addSubview(favoriteButton)
         setupConstarints()
     }
     
@@ -59,16 +64,20 @@ final class StockCellLogoView: UIView {
             symbolLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             symbolLabel.heightAnchor.constraint(equalToConstant: 24),
             //Button
-            favoritesButton.leadingAnchor.constraint(equalTo: symbolLabel.trailingAnchor, constant: 6),
-            favoritesButton.topAnchor.constraint(equalTo: topAnchor, constant: 3),
-            favoritesButton.heightAnchor.constraint(equalToConstant: 16),
-            favoritesButton.widthAnchor.constraint(equalToConstant: 16),
+            favoriteButton.leadingAnchor.constraint(equalTo: symbolLabel.trailingAnchor, constant: 6),
+            favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 3),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 16),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 16),
             //SubTitleLabel
             nameLabel.topAnchor.constraint(equalTo: symbolLabel.bottomAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             nameLabel.heightAnchor.constraint(equalToConstant: 16)
         ])
+    }
+    @objc private func favoriteButtonTap() {
+        favoriteButton.isSelected.toggle()
+        favoriteAction?()
     }
 }
 

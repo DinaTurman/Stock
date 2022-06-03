@@ -9,6 +9,7 @@ import Foundation
 
 protocol StocksViewProtocol: AnyObject {
     func updateView() // презентер может обновить свою вью
+    func updateCell(for indexPath: IndexPath)
     func updateView(withLoader isLoading: Bool)
     func updateView(withError message: String)
 }
@@ -16,14 +17,22 @@ protocol StocksViewProtocol: AnyObject {
 protocol StocksPresenterProtocol {
     var view: StocksViewProtocol? { get set }
     var itemCount: Int { get }
+    var favoriteStocks: [StockModelProtocol] { get  }
     
     func loadView() // сообщает презентеру что вью загрузилась
     func model(for indexPath: IndexPath) -> StockModelProtocol
 }
 
 final class StocksPresenter: StocksPresenterProtocol {
+    
     private let service: StocksServiceProtocol
     private var stocks: [StockModelProtocol] = []
+    
+    
+    var favoriteStocks: [StockModelProtocol] {
+        let array = stocks.filter { $0.isFavorite == true }
+        return array
+    }
     
     var itemCount: Int {
         stocks.count
@@ -37,6 +46,8 @@ final class StocksPresenter: StocksPresenterProtocol {
     
     //презентер идет в сеть за данными, для этого нужен сервис
     func loadView() {
+        startObservingFavoriteNotifications()
+        
         view?.updateView(withLoader: true)
         service.getStocks {[weak self] result in
             //вернулись с результатом
@@ -55,4 +66,15 @@ final class StocksPresenter: StocksPresenterProtocol {
         stocks[indexPath.row]
     }
 }
+
+
+extension StocksPresenter: FavoriteUpdateServiceProtocol {
+    func setFavorite(notification: Notification) {
+        guard let id = notification.stockID,
+              let index = stocks.firstIndex(where: { $0.id == id }) else { return }
+        let indexPath = IndexPath(row: index, section: 0)
+        view?.updateCell(for: indexPath)
+    }
+}
+
 

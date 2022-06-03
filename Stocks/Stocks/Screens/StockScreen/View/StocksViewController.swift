@@ -38,8 +38,16 @@ final class StocksViewController: UIViewController {
         setupView()
         setupSubviews()
         presenter.loadView()
-        
+       
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        guard let navigationVC = tabBarController?.viewControllers?[1] as? UINavigationController,
+              let vc = navigationVC.viewControllers.first as? FavoriteViewController else { return }
+        vc.delegate = self
+    }
+    
+
     
     private func setupSubviews() {
         view.addSubview(tableView)
@@ -54,23 +62,17 @@ final class StocksViewController: UIViewController {
     
     private func setupView() {
         view.backgroundColor = .white
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Stocks"
     }
     
-    private func showErrorMessage(_ message: String) {
-    }
-    
-    private func prepareVC(index: IndexPath) {
-        guard let vc = ModuleBuilder.shared.detailVC() as? DetailViewController else { return }
-        vc.configure(with: presenter.model(for: index))
 
-        let backItem = UIBarButtonItem()
-        backItem.title = ""
-        navigationItem.backBarButtonItem = backItem
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 }
-
 extension StocksViewController: StocksViewProtocol {
+    func updateCell(for indexPath: IndexPath) {
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
     func updateView() {
         tableView.reloadData()
     }
@@ -99,6 +101,18 @@ extension StocksViewController: UITableViewDataSource {
 
 extension StocksViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        prepareVC(index: indexPath)
+        let model = presenter.model(for: indexPath)
+        let detailVC = ModuleBuilder.shared.detailVC(for: model)
+        navigationController?.pushViewController(detailVC, animated: true)
+        print(presenter.model(for: indexPath).isFavorite)
     }
+}
+
+
+extension StocksViewController: FavoriteViewControllerDelegate {
+    var favoriteArray: [StockModelProtocol] {
+        presenter.favoriteStocks
+    }
+    
+    
 }

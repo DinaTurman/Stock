@@ -38,6 +38,11 @@
 		AA25B756283D3AAE003E184C /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = AA25B740283D3AAE003E184C /* README.txt */; };
 		AA7660002840D86A006C745C /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA765FFF2840D86A006C745C /* UIColor+Ext.swift */; };
 		AA9AFC372840CA35000FD1FC /* UIFont+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */; };
+		AAC0EC88284923BC007CAEED /* DetailStockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0EC87284923BC007CAEED /* DetailStockModel.swift */; };
+		AAC0EC8B284936B4007CAEED /* FavoriteUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0EC8A284936B4007CAEED /* FavoriteUpdateService.swift */; };
+		AAC0EC8D2849E4C7007CAEED /* ChartsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0EC8C2849E4C7007CAEED /* ChartsResponse.swift */; };
+		AAC0EC902849F0EF007CAEED /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0EC8F2849F0EF007CAEED /* FavoriteViewController.swift */; };
+		AAC0EC942849F66E007CAEED /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC0EC932849F66E007CAEED /* FavoritePresenter.swift */; };
 		AAE2321B2840DE300010EA99 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232172840DE300010EA99 /* NetworkService.swift */; };
 		AAE2321C2840DE300010EA99 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232182840DE300010EA99 /* HTTPMethod.swift */; };
 		AAE2321D2840DE300010EA99 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232192840DE300010EA99 /* Router.swift */; };
@@ -49,8 +54,9 @@
 		AAE2322B28421A640010EA99 /* StocksPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2322A28421A640010EA99 /* StocksPresenter.swift */; };
 		AAE2322E28429B3D0010EA99 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2322D28429B3D0010EA99 /* ModuleBuilder.swift */; };
 		AAE232302842A5120010EA99 /* StockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2322F2842A5120010EA99 /* StockModel.swift */; };
-		AAE232372843437A0010EA99 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232362843437A0010EA99 /* DetailPresenter.swift */; };
-		AAE232392843439A0010EA99 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232382843439A0010EA99 /* DetailModel.swift */; };
+		AAE232372843437A0010EA99 /* DetailStockPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE232362843437A0010EA99 /* DetailStockPresenter.swift */; };
+		AAE2323D284755610010EA99 /* FavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2323C284755610010EA99 /* FavoritesService.swift */; };
+		AAE2323F284755990010EA99 /* FileManagerFavoritesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE2323E284755990010EA99 /* FileManagerFavoritesService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +93,11 @@
 		AA25B740283D3AAE003E184C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		AA765FFF2840D86A006C745C /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		AA9AFC362840CA35000FD1FC /* UIFont+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Ext.swift"; sourceTree = "<group>"; };
+		AAC0EC87284923BC007CAEED /* DetailStockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStockModel.swift; sourceTree = "<group>"; };
+		AAC0EC8A284936B4007CAEED /* FavoriteUpdateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUpdateService.swift; sourceTree = "<group>"; };
+		AAC0EC8C2849E4C7007CAEED /* ChartsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsResponse.swift; sourceTree = "<group>"; };
+		AAC0EC8F2849F0EF007CAEED /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		AAC0EC932849F66E007CAEED /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		AAE232172840DE300010EA99 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AAE232182840DE300010EA99 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		AAE232192840DE300010EA99 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -98,8 +109,9 @@
 		AAE2322A28421A640010EA99 /* StocksPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StocksPresenter.swift; sourceTree = "<group>"; };
 		AAE2322D28429B3D0010EA99 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		AAE2322F2842A5120010EA99 /* StockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockModel.swift; sourceTree = "<group>"; };
-		AAE232362843437A0010EA99 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
-		AAE232382843439A0010EA99 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
+		AAE232362843437A0010EA99 /* DetailStockPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStockPresenter.swift; sourceTree = "<group>"; };
+		AAE2323C284755610010EA99 /* FavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesService.swift; sourceTree = "<group>"; };
+		AAE2323E284755990010EA99 /* FileManagerFavoritesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerFavoritesService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +147,8 @@
 				AA25B709283D192F003E184C /* AppDelegate.swift */,
 				AAE2322D28429B3D0010EA99 /* ModuleBuilder.swift */,
 				AA25B726283D3A52003E184C /* Application */,
-				AAE232162840DE300010EA99 /* NetworkService */,
-				AAE232142840DDD90010EA99 /* StockScreen */,
-				AAE23232284343100010EA99 /* DetailScreen */,
+				AAE2323A284755020010EA99 /* Services */,
+				AAE23241284756010010EA99 /* Screens */,
 				AAE232132840DDBC0010EA99 /* Extensions */,
 				AA25B728283D3A83003E184C /* SupportingFiles */,
 			);
@@ -205,6 +216,40 @@
 				AA25B73E283D3AAE003E184C /* Montserrat-ExtraBoldItalic.ttf */,
 			);
 			path = static;
+			sourceTree = "<group>";
+		};
+		AAC0EC892849369B007CAEED /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				AAC0EC8A284936B4007CAEED /* FavoriteUpdateService.swift */,
+				AAC0EC8C2849E4C7007CAEED /* ChartsResponse.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		AAC0EC8E2849F0C5007CAEED /* FavoriteScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AAC0EC922849F102007CAEED /* Presenter */,
+				AAC0EC912849F0F7007CAEED /* View */,
+			);
+			path = FavoriteScreen;
+			sourceTree = "<group>";
+		};
+		AAC0EC912849F0F7007CAEED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AAC0EC8F2849F0EF007CAEED /* FavoriteViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AAC0EC922849F102007CAEED /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				AAC0EC932849F66E007CAEED /* FavoritePresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		AAE232132840DDBC0010EA99 /* Extensions */ = {
@@ -275,14 +320,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		AAE23232284343100010EA99 /* DetailScreen */ = {
+		AAE23232284343100010EA99 /* DetailStockScreen */ = {
 			isa = PBXGroup;
 			children = (
+				AAC0EC892849369B007CAEED /* Service */,
 				AAE232352843434B0010EA99 /* Model */,
 				AAE232342843433C0010EA99 /* Presenter */,
 				AAE23233284343290010EA99 /* View */,
 			);
-			path = DetailScreen;
+			path = DetailStockScreen;
 			sourceTree = "<group>";
 		};
 		AAE23233284343290010EA99 /* View */ = {
@@ -296,7 +342,7 @@
 		AAE232342843433C0010EA99 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				AAE232362843437A0010EA99 /* DetailPresenter.swift */,
+				AAE232362843437A0010EA99 /* DetailStockPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -304,9 +350,37 @@
 		AAE232352843434B0010EA99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AAE232382843439A0010EA99 /* DetailModel.swift */,
+				AAC0EC87284923BC007CAEED /* DetailStockModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		AAE2323A284755020010EA99 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AAE2323B284755330010EA99 /* FavoritesService */,
+				AAE232162840DE300010EA99 /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AAE2323B284755330010EA99 /* FavoritesService */ = {
+			isa = PBXGroup;
+			children = (
+				AAE2323C284755610010EA99 /* FavoritesService.swift */,
+				AAE2323E284755990010EA99 /* FileManagerFavoritesService.swift */,
+			);
+			path = FavoritesService;
+			sourceTree = "<group>";
+		};
+		AAE23241284756010010EA99 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				AAE232142840DDD90010EA99 /* StockScreen */,
+				AAE23232284343100010EA99 /* DetailStockScreen */,
+				AAC0EC8E2849F0C5007CAEED /* FavoriteScreen */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,25 +475,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAE2323D284755610010EA99 /* FavoritesService.swift in Sources */,
 				AA7660002840D86A006C745C /* UIColor+Ext.swift in Sources */,
 				AA9AFC372840CA35000FD1FC /* UIFont+Ext.swift in Sources */,
 				AAE232302842A5120010EA99 /* StockModel.swift in Sources */,
 				AAE232212840DE6B0010EA99 /* StocksService.swift in Sources */,
+				AAC0EC88284923BC007CAEED /* DetailStockModel.swift in Sources */,
 				AAE2321D2840DE300010EA99 /* Router.swift in Sources */,
 				AAE232232840DE950010EA99 /* StockResponse.swift in Sources */,
 				AAE2321B2840DE300010EA99 /* NetworkService.swift in Sources */,
 				AA25B724283D34F5003E184C /* StockCellLogoView.swift in Sources */,
 				AA25B71E283D1DA2003E184C /* StockCell.swift in Sources */,
+				AAC0EC8D2849E4C7007CAEED /* ChartsResponse.swift in Sources */,
 				AAE2321C2840DE300010EA99 /* HTTPMethod.swift in Sources */,
-				AAE232372843437A0010EA99 /* DetailPresenter.swift in Sources */,
+				AAE232372843437A0010EA99 /* DetailStockPresenter.swift in Sources */,
+				AAC0EC902849F0EF007CAEED /* FavoriteViewController.swift in Sources */,
 				AA25B720283D2427003E184C /* NSObject+Ext.swift in Sources */,
 				AAE2322E28429B3D0010EA99 /* ModuleBuilder.swift in Sources */,
 				AA25B70E283D192F003E184C /* StocksViewController.swift in Sources */,
+				AAC0EC8B284936B4007CAEED /* FavoriteUpdateService.swift in Sources */,
 				AAE2321E2840DE300010EA99 /* NetworkError.swift in Sources */,
 				AAE232292840FDEE0010EA99 /* UINavigationItem+ Ext.swift in Sources */,
-				AAE232392843439A0010EA99 /* DetailModel.swift in Sources */,
 				AA25B70A283D192F003E184C /* AppDelegate.swift in Sources */,
+				AAE2323F284755990010EA99 /* FileManagerFavoritesService.swift in Sources */,
 				AAE232252840E4630010EA99 /* DetailViewController.swift in Sources */,
+				AAC0EC942849F66E007CAEED /* FavoritePresenter.swift in Sources */,
 				AAE2322B28421A640010EA99 /* StocksPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
