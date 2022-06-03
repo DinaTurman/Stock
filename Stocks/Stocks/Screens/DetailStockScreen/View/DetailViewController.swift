@@ -10,14 +10,10 @@ import Foundation
 
 import UIKit
 
-class DetailViewController: UIViewController{
-    var symbol: String = ""
-    var name: String = ""
-    var id = ""
+class DetailViewController: UIViewController {
+    private let presenter: DetailStockPresenterProtocol
     
-    private let presenter: DetailPresenterProtocol
-    
-    init(presenter: DetailPresenterProtocol) {
+    init(presenter: DetailStockPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -56,14 +52,12 @@ class DetailViewController: UIViewController{
         return view
     }()
     
-    override func viewWillAppear(_ animated: Bool) {
-        presenter.loadView(id: id)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupSubviews()
+        presenter.loadView()
         
     }
     
@@ -92,21 +86,43 @@ class DetailViewController: UIViewController{
     
     private func setupView() {
         view.backgroundColor = .white
-        self.navigationItem.setTitle(symbol, subtitle: name)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Star 1"), style: .plain, target: self, action: nil)
+        self.navigationItem.setTitle(presenter.title, subtitle: presenter.subtitle)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationItem.backBarButtonItem = backItem
+        
+        dayDeltaLabel.text = presenter.change
+        priceLabel.text = presenter.price
+        
+        setupFavoriteButton()
+    }
+    
+    private func setupFavoriteButton() {
+
+        let button = UIButton()
+        button.setImage(UIImage(named: "Star 1"), for: .normal)
+        button.setImage(UIImage(named: "Path (1)"), for: .selected)
+        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+        button.isSelected = presenter.favoriteButtonIsSelected
+        button.frame = CGRect(x: 0, y: 0, width: 44, height: 44)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     func configure(with model: StockModelProtocol) {
-        symbol = model.symbol
-        name = model.name
-        priceLabel.text = model.price
-        dayDeltaLabel.text = model.change
-        id = model.id
-        print(id)
+    
+    }
+    
+    @objc func favoriteButtonTapped(sender: UIButton) {
+        sender.isSelected.toggle()
+        presenter.favoriteButtonTapped()
+        sender.updateConfiguration()
     }
 }
     
-extension DetailViewController: DetailViewProtocol {
+extension DetailViewController: DetailStockViewProtocol {
     func updateView() {
         timelineView.isHidden = false
     }

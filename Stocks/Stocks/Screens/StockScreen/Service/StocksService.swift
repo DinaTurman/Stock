@@ -12,7 +12,7 @@ import Foundation
 
 enum StockRouter: Router {
     case stocks(currency: String, count: String)
-    case detail(id: String, currency: String, days: String, interval: String)
+    case detail(id: String, currency: String, days: String, isDaily: Bool)
     
     var baseUrl: String {
         "https://api.coingecko.com"
@@ -30,9 +30,7 @@ enum StockRouter: Router {
     
     var method: HTTPMethod {
         switch self {
-        case .stocks:
-            return .get
-        case .detail:
+        case .stocks, .detail:
             return .get
         }
     }
@@ -41,8 +39,8 @@ enum StockRouter: Router {
         switch self {
         case .stocks(let currency, let count):
             return ["vs_currency": currency, "per_page": count]
-        case .detail(_ , let currency, let days, let interval):
-            return ["vs_currency": currency, "days": days, "interval": interval ]
+        case .detail(_ , let currency, let days, let isDaily):
+            return ["vs_currency": currency, "days": days, "interval": isDaily ? "daily" : ""]
         }
     }
 }
@@ -51,10 +49,7 @@ protocol StocksServiceProtocol {
     func getStocks(carrency: String, count: String, completion: @escaping(Result<[Stock], NetworkError>) -> Void)
     func getStocks(carrency: String, completion: @escaping(Result<[Stock], NetworkError>) -> Void)
     func getStocks(completion: @escaping(Result<[Stock], NetworkError>) -> Void)
-    func getChange(id: String, currency: String, days: String, interval: String, completion: @escaping(Result<PriceChanges, NetworkError>) -> Void)
-    func getChange(id: String, days: String, interval: String, completion: @escaping(Result<PriceChanges, NetworkError>) -> Void)
-    func getChange(id: String, interval: String, completion: @escaping(Result<PriceChanges, NetworkError>) -> Void)
-    func getChange(id: String, completion: @escaping(Result<PriceChanges, NetworkError>) -> Void)
+    func getCharts(id: String, currency: String, days: String, isDaily: Bool, completion: @escaping(Result<Charts, NetworkError>) -> Void)
 }
 
 extension StocksServiceProtocol {
@@ -63,16 +58,6 @@ extension StocksServiceProtocol {
     }
     func getStocks(completion: @escaping(Result<[Stock], NetworkError>) -> Void) {
         getStocks(carrency: "usd", completion: completion)
-    }
-    func getChange(id: String, days: String, interval: String, completion: @escaping(Result<PriceChanges, NetworkError>) -> Void) {
-        getChange(id: id, currency: "usd", days: days, interval: interval, completion: completion)
-    }
-    func getChange(id: String, interval: String, completion: @escaping(Result<PriceChanges, NetworkError>) -> Void) {
-        getChange(id: id, days: "600", interval: interval, completion: completion)
-    }
-    
-    func getChange(id: String, completion: @escaping(Result<PriceChanges, NetworkError>) -> Void) {
-        getChange(id: id, interval: "daily", completion: completion)
     }
     
 }
@@ -88,7 +73,7 @@ final class StocksService: StocksServiceProtocol {
         client.execute(with: StockRouter.stocks(currency: carrency, count: count), completion: completion)
     }
     
-    func getChange(id: String, currency: String, days: String, interval: String, completion: @escaping (Result<PriceChanges, NetworkError>) -> Void) {
-        client.execute(with: StockRouter.detail(id: id, currency: currency, days: days, interval: interval), completion: completion)
+    func getCharts(id: String, currency: String, days: String, isDaily: Bool, completion: @escaping (Result<Charts, NetworkError>) -> Void) {
+        client.execute(with: StockRouter.detail(id: id, currency: currency, days: days, isDaily: isDaily), completion: completion)
     }
 }

@@ -17,32 +17,36 @@ final class ModuleBuilder {
     
     static let shared: ModuleBuilder = .init()
     
-    func networkService() -> NetworkService {
-        network
-    }
+    let favoritesService: FavoritesServiceProtocol = FavoritesLocalService()
     
-    func stocksService() -> StocksServiceProtocol {
-        StocksService(client: network)
-    }
+    private lazy var stocksService: StocksServiceProtocol = StocksService(client: network)
+
+
+    
     
     func stocksModule() -> UIViewController {
-        let presenter = StocksPresenter(service: stocksService())
+        let presenter = StocksPresenter(service: stocksService)
         let view = StocksViewController(presenter: presenter)
         presenter.view = view
+        
         
         return view
     }
     
-    func detailVC() -> UIViewController {
-        let presenter = DetailPresenter(service: stocksService())
+    func detailVC(for model: StockModelProtocol) -> UIViewController {
+        let presenter = DetailStockPresenter(model: model, service: stocksService)
         let view = DetailViewController(presenter: presenter)
         presenter.view = view
         
         return view
     }
     
-    func searchVC() -> UIViewController {
-        UIViewController()
+    func favoriteVC() -> UIViewController {
+        let presenter = FavoritePresenter()
+        let view = FavoriteViewController(presenter: presenter)
+        presenter.view = view
+        
+        return view
     }
     
     func thirdVC() -> UIViewController {
@@ -55,8 +59,9 @@ final class ModuleBuilder {
         let stocksVC = UINavigationController(rootViewController: stocksModule())
         stocksVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "diagram"), tag: 0)
         
-        let secondVC = searchVC()
-        secondVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Star"), tag: 2)
+        let secondVC = UINavigationController(rootViewController: favoriteVC())
+        secondVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Star"), tag: 1)
+        
         
         let thirdVC = thirdVC()
         thirdVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Search"), tag: 2)

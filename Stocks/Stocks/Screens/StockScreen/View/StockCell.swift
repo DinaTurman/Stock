@@ -70,6 +70,12 @@ final class StockCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        logoView.favoriteAction = nil
+    }
+    
     private func setupSubviews() {
         contentView.addSubview(iconView)
         contentView.addSubview(logoView)
@@ -119,6 +125,10 @@ final class StockCell: UITableViewCell {
         logoView.nameLabel.text = model.name
         priceLabel.text = model.price
         dayDeltaLabel.text = model.change
+        logoView.favoriteButton.isSelected = model.isFavorite
+        logoView.favoriteAction = {
+            model.setFavorite()
+        }
            
        }
 }
