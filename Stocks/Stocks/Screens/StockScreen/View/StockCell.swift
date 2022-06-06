@@ -129,6 +129,5 @@ final class StockCell: UITableViewCell {
         logoView.favoriteAction = {
             model.setFavorite()
         }
-           
-       }
+    }
 }

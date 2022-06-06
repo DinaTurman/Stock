@@ -24,7 +24,7 @@ protocol StockModelProtocol {
 
 final class StockModel: StockModelProtocol {
     private let stock: Stock
-    private let favoriteService: FavoritesServiceProtocol
+    let favoriteService: FavoritesServiceProtocol
 
     init(stock: Stock) {
         self.stock = stock

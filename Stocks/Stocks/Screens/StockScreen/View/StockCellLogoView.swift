@@ -37,6 +37,7 @@ final class StockCellLogoView: UIView {
         button.setImage(UIImage(named: "Path (1)"), for: .selected)
         button.addTarget(self, action: #selector(favoriteButtonTap), for: .touchUpInside)
         button.setImage(image, for: .normal)
+
         
         return button
     }()
@@ -66,8 +67,8 @@ final class StockCellLogoView: UIView {
             //Button
             favoriteButton.leadingAnchor.constraint(equalTo: symbolLabel.trailingAnchor, constant: 6),
             favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 3),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 16),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 16),
+//            favoriteButton.heightAnchor.constraint(equalToConstant: 16),
+//            favoriteButton.widthAnchor.constraint(equalToConstant: 16),
             //SubTitleLabel
             nameLabel.topAnchor.constraint(equalTo: symbolLabel.bottomAnchor),
             nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor),

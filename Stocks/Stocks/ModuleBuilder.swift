@@ -29,7 +29,6 @@ final class ModuleBuilder {
         let view = StocksViewController(presenter: presenter)
         presenter.view = view
         
-        
         return view
     }
     
@@ -42,7 +41,7 @@ final class ModuleBuilder {
     }
     
     func favoriteVC() -> UIViewController {
-        let presenter = FavoritePresenter()
+        let presenter = FavoritePresenter(service: stocksService)
         let view = FavoriteViewController(presenter: presenter)
         presenter.view = view
         

@@ -17,7 +17,7 @@ protocol StocksViewProtocol: AnyObject {
 protocol StocksPresenterProtocol {
     var view: StocksViewProtocol? { get set }
     var itemCount: Int { get }
-    var favoriteStocks: [StockModelProtocol] { get  }
+    var favoriteStocks: [StockModelProtocol] { get }
     
     func loadView() // сообщает презентеру что вью загрузилась
     func model(for indexPath: IndexPath) -> StockModelProtocol
@@ -29,10 +29,10 @@ final class StocksPresenter: StocksPresenterProtocol {
     private var stocks: [StockModelProtocol] = []
     
     
-    var favoriteStocks: [StockModelProtocol] {
+    lazy var favoriteStocks: [StockModelProtocol] = {
         let array = stocks.filter { $0.isFavorite == true }
         return array
-    }
+    }()
     
     var itemCount: Int {
         stocks.count
@@ -42,11 +42,11 @@ final class StocksPresenter: StocksPresenterProtocol {
     
     init(service: StocksServiceProtocol, view: StocksViewProtocol? = nil) {
         self.service = service
+        startObservingFavoriteNotifications()
     }
     
-    //презентер идет в сеть за данными, для этого нужен сервис
+
     func loadView() {
-        startObservingFavoriteNotifications()
         
         view?.updateView(withLoader: true)
         service.getStocks {[weak self] result in

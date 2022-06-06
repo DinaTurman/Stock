@@ -9,12 +9,10 @@ import Foundation
 import UIKit
 
 class FavoriteViewController: UIViewController {
-    weak var delegate: FavoriteViewControllerDelegate?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
-        tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.register(StockCell.self, forCellReuseIdentifier: StockCell.typeName)
@@ -26,6 +24,7 @@ class FavoriteViewController: UIViewController {
     
     init(presenter: FavoritePresenter) {
         self.presenter = presenter
+
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,7 +39,6 @@ class FavoriteViewController: UIViewController {
         setupView()
         setupSubviews()
         presenter.loadView()
-        
         
     }
     
@@ -64,18 +62,24 @@ class FavoriteViewController: UIViewController {
 
 }
 extension FavoriteViewController: FavoriteViewProtocol {
- 
-    func updateView() {
-        presenter.favoriteStocks = delegate?.favoriteArray ?? []
-        print("update FVC")
-    }
-    
     func updateView(withLoader isLoading: Bool) {
-        print("Loader is - ", isLoading, " at ", Date())
+        print(" Load ")
     }
     
     func updateView(withError message: String) {
-        print("Error - ", message)
+        print(message)
+    }
+    
+ 
+    func updateView() {
+        tableView.reloadData()
+    }
+    
+
+    
+    func updateCell(for indexPath: IndexPath) {
+        print(presenter.favoriteStocks.count, "fav count")
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
 
@@ -92,15 +96,4 @@ extension FavoriteViewController: UITableViewDataSource {
     }
 }
 
-extension FavoriteViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = presenter.model(for: indexPath)
-        let detailVC = ModuleBuilder.shared.detailVC(for: model)
-        navigationController?.pushViewController(detailVC, animated: true)
-        print(presenter.model(for: indexPath).isFavorite)
-    }
-}
 
-protocol FavoriteViewControllerDelegate: AnyObject {
-    var favoriteArray: [StockModelProtocol] { get }
-}

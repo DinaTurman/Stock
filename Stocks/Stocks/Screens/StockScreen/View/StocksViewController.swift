@@ -32,20 +32,19 @@ final class StocksViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         setupSubviews()
         presenter.loadView()
-       
+        
+//        guard let navigationVC = tabBarController?.viewControllers?[1] as? UINavigationController,
+//              let vc = navigationVC.viewControllers.first as? FavoriteViewController else { return }
+//        vc.delegate = self
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        guard let navigationVC = tabBarController?.viewControllers?[1] as? UINavigationController,
-              let vc = navigationVC.viewControllers.first as? FavoriteViewController else { return }
-        vc.delegate = self
-    }
     
 
     
@@ -104,15 +103,7 @@ extension StocksViewController: UITableViewDelegate {
         let model = presenter.model(for: indexPath)
         let detailVC = ModuleBuilder.shared.detailVC(for: model)
         navigationController?.pushViewController(detailVC, animated: true)
-        print(presenter.model(for: indexPath).isFavorite)
     }
 }
 
 
-extension StocksViewController: FavoriteViewControllerDelegate {
-    var favoriteArray: [StockModelProtocol] {
-        presenter.favoriteStocks
-    }
-    
-    
-}
